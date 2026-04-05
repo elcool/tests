@@ -23,4 +23,17 @@ jobs:
         run: npm run build
 
       - name: Run script
-        run: npm run start
+        run: |
+          node dist/run-lineup.js | tee output.log
+
+      - name: Add summary
+        run: |
+          echo "## Yahoo Lineup Bot" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Status: Success" >> $GITHUB_STEP_SUMMARY
+          echo "- Run time: $(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Output" >> $GITHUB_STEP_SUMMARY
+          echo '```text' >> $GITHUB_STEP_SUMMARY
+          cat output.log >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
