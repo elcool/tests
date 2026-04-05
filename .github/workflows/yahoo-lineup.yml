@@ -32,3 +32,8 @@ jobs:
 
       - name: Run script
         run: npm run start
+        env:
+          YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
+          YAHOO_CLIENT_SECRET: ${{ secrets.YAHOO_CLIENT_SECRET }}
+          YAHOO_REFRESH_TOKEN: ${{ secrets.YAHOO_REFRESH_TOKEN }}
+          YAHOO_TEAM_KEY: ${{ secrets.YAHOO_TEAM_KEY }}
